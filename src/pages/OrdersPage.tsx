@@ -2,8 +2,17 @@ import React, {useState} from 'react'
 import Header from "../components/UI/Header";
 import OrderBlock from "../components/UI/OrderBlock";
 import MainButton from "../components/UI/MainButton";
+import useFetchData from "../hooks/useFetchData";
 
 const OrdersPage = () => {
+
+    const BASE_URL_ORDERS = "http://206.189.61.25:8003/apartx_orders/"
+
+    const {data, error, isLoading} = useFetchData(`${BASE_URL_ORDERS}orders/orders/`)
+
+    console.log(data)
+    console.log(error)
+
     const [searchQuery, setSearchQuery] = useState("");
 
     const [tags, setTags] = useState([]);
@@ -17,13 +26,14 @@ const OrdersPage = () => {
     // }
 
 
-    // const filteredItems = items.results
-    //     ? items.results.filter(
-    //         (item) =>
-    //             item.title &&
-    //             item.title.toLowerCase().includes((searchQuery ?? "").toLowerCase())
-    //     )
-    //     : [];
+    const filteredItems = data && data.results
+        ? data.results.filter(
+            (item) =>
+                item.title &&
+                item.title.toLowerCase().includes((searchQuery ?? "").toLowerCase())
+        )
+        : [];
+
     return (
         <div>
             <Header></Header>
@@ -39,7 +49,7 @@ const OrdersPage = () => {
                 </div>
                 <article>
                     <section className={"orders_page_tags"}>
-                        <MainButton >
+                        <MainButton>
                             Уборка
                         </MainButton>
                         <MainButton>
@@ -49,9 +59,7 @@ const OrdersPage = () => {
                             Покраска
                         </MainButton>
                     </section>
-                    <OrderBlock/>
-                    <OrderBlock/>
-                    <OrderBlock/>
+                    <OrderBlock data={filteredItems}/>
                 </article>
             </main>
         </div>

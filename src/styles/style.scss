@@ -268,4 +268,24 @@ main {
   margin-top: 10px;
 }
 
+.tags{
+  display: flex;
+  flex-direction: row;
+}
+
+.tag {
+  border: 1px solid;
+  background-color: #E6F0D5;
+  font-family: 'Inter', sans-serif;
+  margin-right: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  border-radius: 10px;
+
+  height: 20px;
+  padding: 10px;
+  text-align: center;
+
+}
 
