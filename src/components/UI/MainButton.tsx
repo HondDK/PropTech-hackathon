@@ -1,11 +1,17 @@
-import React, {HTMLProps} from 'react'
+import React, { ButtonHTMLAttributes } from 'react';
 
-const MainButton = (props: HTMLProps<HTMLElement>) => {
-    return (
-        <button className={"mainBtn"}>
-            {props.children}
-        </button>
-    )
+interface MainButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    type?: 'button' | 'submit' | 'reset';
 }
 
-export default MainButton
+const MainButton = (props: MainButtonProps) => {
+    const { children, ...rest } = props;
+
+    return (
+        <button type="button" className="mainBtn" {...rest}>
+            {children}
+        </button>
+    );
+};
+
+export default MainButton;

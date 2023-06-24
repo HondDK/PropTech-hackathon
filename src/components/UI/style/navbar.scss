@@ -3,7 +3,12 @@
 .bm-burger-bars {
   background: #373a47;
 }
+.bm-burger-button {
+  position: relative;
+  width: 36px;
+  height: 30px;
 
+}
 /* Color/shape of burger icon bars on hover*/
 .bm-burger-bars-hover {
   background: #a90000;
@@ -15,7 +20,10 @@
   height: 24px;
   width: 24px;
 }
-
+.bm-burger-button{
+ width: 50px;
+  height: 50px;
+}
 /* Color/shape of close button cross */
 .bm-cross {
   background: #bdc3c7;
@@ -27,7 +35,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 */
 .bm-menu-wrap {
   position: fixed;
-  height: 100%;
+
 
 }
 

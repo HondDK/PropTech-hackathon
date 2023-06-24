@@ -5,7 +5,7 @@ import CustomMenuIcon from "./CustomMenuIcon";
 
 const Navbar = () => {
     return (
-        <Menu customBurgerIcon={<CustomMenuIcon/>} width={"100%"} right>
+        <Menu customBurgerIcon={<CustomMenuIcon/>} width={"100%"} right disableAutoFocus={true}>
             <a>Профиль</a>
             <hr/>
             <a>Профиль</a>
