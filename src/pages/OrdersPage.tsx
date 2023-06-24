@@ -1,9 +1,20 @@
 import React, {useState} from 'react'
 import Header from "../components/UI/Header";
 import OrderBlock from "../components/UI/OrderBlock";
+import MainButton from "../components/UI/MainButton";
 
-const OrderPage = () => {
+const OrdersPage = () => {
     const [searchQuery, setSearchQuery] = useState("");
+
+    const [tags, setTags] = useState([]);
+    // function selectTag(e: string): void {
+    //     const selectedTags: string[] = [e, ...tags];
+    //     setTags(selectedTags);
+    //     const tagUuids: string = selectedTags.join("&tags=");
+    //     fetch(`http://165.232.69.211:8001/freelance/orders/orders?tags=${tagUuids}`)
+    //         .then((response: Response) => response.json())
+    //         .then((data: any) => setItems(data));
+    // }
 
 
     // const filteredItems = items.results
@@ -27,14 +38,24 @@ const OrderPage = () => {
                          alt={"поиск"}/>
                 </div>
                 <article>
+                    <section className={"orders_page_tags"}>
+                        <MainButton >
+                            Уборка
+                        </MainButton>
+                        <MainButton>
+                            Сантехника
+                        </MainButton>
+                        <MainButton>
+                            Покраска
+                        </MainButton>
+                    </section>
                     <OrderBlock/>
                     <OrderBlock/>
                     <OrderBlock/>
-
                 </article>
             </main>
         </div>
     )
 }
 
-export default OrderPage
+export default OrdersPage

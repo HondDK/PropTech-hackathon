@@ -2,7 +2,7 @@ import React from 'react';
 import '../src/styles/style.scss';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
-import OrderPage from "./pages/OrderPage";
+import OrdersPage from "./pages/OrdersPage";
 import OrderDetailPage from "./pages/OrderDetailPage";
 import UserProfilePage from "./pages/UserProfilePage";
 import {PersistGate} from "redux-persist/integration/react";
@@ -20,10 +20,10 @@ function App() {
                     <Router>
                         <Routes>
                             <Route element={<LoginPage/>} path="/"/>
-                            <Route element={<OrderPage/>} path="/orders"/>
-                            <Route element={<OrderDetailPage/>} path="/order_detail"/>
+                            <Route element={<OrdersPage/>} path="/orders"/>
+                            <Route element={<OrderDetailPage/>} path="/order_detail/"/>
                             <Route element={<PrivateRoute/>}>
-                                <Route element={<UserProfilePage/>} path="/user_profile"/>
+                                <Route element={<UserProfilePage/>} path="/user_profile/:uuid"/>
                             </Route>
                         </Routes>
                     </Router>

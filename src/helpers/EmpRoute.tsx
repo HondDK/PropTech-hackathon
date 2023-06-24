@@ -1,8 +1,8 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useAppSelector } from "../hooks/useRedux";
 
-const PrivateRoutes = () => {
-    const { access_token } = useAppSelector((state) => state.loginPage);;
+const EmpRoute = () => {
+    const { access_token } = useAppSelector((state) => state.loginPage);
     const location = useLocation();
 
     const isLoginPage = location.pathname === "/";
@@ -18,4 +18,4 @@ const PrivateRoutes = () => {
     }
 };
 
-export default PrivateRoutes;
+export default EmpRoute;

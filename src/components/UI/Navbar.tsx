@@ -8,7 +8,7 @@ const Navbar = () => {
         <Menu customBurgerIcon={<CustomMenuIcon/>} width={"100%"} right disableAutoFocus={true}>
             <a>Профиль</a>
             <hr/>
-            <a>Профиль</a>
+            <a>Принятые заказы</a>
             <hr/>
             <a>Профиль</a>
             <hr/>

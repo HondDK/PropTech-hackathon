@@ -90,6 +90,13 @@ main {
   }
 
   article {
+    .orders_page_tags {
+      width: 100%;
+
+      button {
+        margin-right: 5px;
+      }
+    }
 
     .order_block {
       @extend %shadow_block;
@@ -100,11 +107,28 @@ main {
     }
 
     .order_block_detail {
+      display: flex;
+      flex-direction: column;
       @extend %shadow_block;
       padding: 10px;
       padding-top: 0px;
       font-family: 'Inter', sans-serif;
 
+      .order_block_detail_img {
+        width: 300px;
+        margin: auto;
+
+        img {
+          @extend %shadow_block;
+          width: 300px;
+          height: 300px;
+        }
+
+        button {
+          width: 100%;
+          margin-top: 10px;
+        }
+      }
     }
 
     .order_block_head_text {
@@ -119,6 +143,39 @@ main {
       font-size: 14px;
       text-align: end;
     }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.8);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+
+      .form-container {
+        form{
+          margin: 0;
+        }
+        background-color: white;
+        @extend %shadow_block;
+
+        input {
+          border: black solid 0.5px;
+          border-radius: 5px;
+          font-family: 'Inter', sans-serif;
+        }
+      }
+      img{
+        margin: 0 auto;
+        width: 70px;
+        height: 70px;
+      }
+    }
+
   }
 }
 
