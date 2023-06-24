@@ -3,7 +3,7 @@ import Header from '../components/UI/Header';
 import OrderBlock from '../components/UI/OrderBlock';
 import useFetchData from '../hooks/useFetchData';
 import Tags from '../components/UI/Tags';
-import RolePrivateComponents from "../helpers/RolePrivateComponents";
+import OWNRolePrivateComponents from "../helpers/OWNRolePrivateComponents";
 
 const OrdersPage = () => {
     const BASE_URL_ORDERS = 'http://206.189.61.25:8003/apartx_orders/';

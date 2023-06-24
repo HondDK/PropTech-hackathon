@@ -314,3 +314,11 @@ main {
   @extend %shadow_block;
   padding: 10px;
 }
+.menu{
+  display: flex;
+
+  button{
+    width: 100%;
+    margin-top: 10px;
+  }
+}

@@ -1,8 +1,15 @@
 import React from 'react'
 import Header from "../components/UI/Header";
 import MainButton from "../components/UI/MainButton";
+import {useAppSelector} from "../hooks/useRedux";
+import useFetchData from "../hooks/useFetchData";
 
 const UserProfilePage = () => {
+    const {access_token, email} = useAppSelector((state) => state.loginPage);
+    const BASE_URL = "http://206.189.61.25:8003/apartx_orders/orders/order_responses/my";
+    const {data, isLoading, error} = useFetchData(BASE_URL, access_token);
+
+
     return (
         <div>
             <Header></Header>

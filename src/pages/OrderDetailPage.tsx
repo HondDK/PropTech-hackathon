@@ -4,16 +4,18 @@ import MainButton from '../components/UI/MainButton';
 import {useParams} from "react-router-dom";
 import useFetchData from "../hooks/useFetchData";
 import useRequest from "../hooks/useRequest";
-import {useAppSelector} from "../hooks/useRedux";
+import {useAppDispatch, useAppSelector} from "../hooks/useRedux";
 import useFormInput from "../hooks/useFormInput";
+import {log} from "util";
 
 const OrderDetailPage = () => {
     const {uuid} = useParams();
     const BASE_URL = 'http://206.189.61.25:8003/apartx_orders/';
+    const dispatch = useAppDispatch();
 
     const {data, error, isLoading} = useFetchData(`${BASE_URL}orders/orders/${uuid}`);
     const {responseData, sendRequest} = useRequest();
-    const {access_token} = useAppSelector((state) => state.loginPage);
+    const {access_token, email, username} = useAppSelector((state) => state.loginPage);
     const [showForm, setShowForm] = useState(false);
 
     const text = useFormInput<string>('');
@@ -38,7 +40,14 @@ const OrderDetailPage = () => {
 
     }
 
-
+    function handleSubmitResponse(id: string) {
+        const article = {
+            id: uuid,
+        }
+        const url = `${BASE_URL}/orders/orders/${id}/choose_order_response/`
+        sendRequest(url, article, access_token);
+    }
+    console.log(username);
     return (
         <div>
             <Header/>
@@ -102,6 +111,9 @@ const OrderDetailPage = () => {
                             <p>{item.user_email}</p>
                             <p>{item.text}</p>
                             <p>{item.hours} ч</p>
+                                {data.user_email === username &&
+                                <MainButton onClick={() => handleSubmitResponse(item.uuid)}>Принять</MainButton>
+                            }
                         </section>
                     ))}
                 </article>

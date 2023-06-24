@@ -33,10 +33,12 @@ const FormLogin = () => {
         if (responseData && responseData.status === 0) {
             dispatch(setEmail(email.value))
             setIsCodeSent(true);
-            // @ts-ignore
-            setUUID(responseData.uuid);
+            if(responseData && responseData.uuid){
+                setUUID(responseData.uuid);
+            }
+
         }
-        if (error.response.status === 403) {
+        if (error.response.status === 403 || error.response.status === 401 ) {
             setIsRegistered(true);
         }
         console.log(error)

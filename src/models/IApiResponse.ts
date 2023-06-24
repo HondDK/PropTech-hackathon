@@ -1,4 +1,5 @@
     export interface IApiResponse {
+        user_email?: string;
 
         tagData?: {
             results?: {

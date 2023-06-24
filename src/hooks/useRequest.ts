@@ -24,6 +24,8 @@ interface Article extends FormData{
     hours?: number,
     text?: string,
     order?: string,
+    id?: string,
+    role?: string,
     formData?: {
         file: any;
         type: number;

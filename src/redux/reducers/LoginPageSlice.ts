@@ -6,6 +6,7 @@ const initialState: ILoginPage = {
     email: "",
     access_token: "",
     refresh_token: "",
+    username: "",
 };
 
 const loginPageSlice = createSlice({
@@ -21,10 +22,12 @@ const loginPageSlice = createSlice({
         setRefresh_token: (state, action: PayloadAction<string>) => {
             state.refresh_token = action.payload;
         },
-
+        setUsername: (state, action: PayloadAction<string>) => {
+            state.username = action.payload;
+        },
     },
 });
 
-export const {setEmail, setAccess_token, setRefresh_token} =
+export const {setEmail, setAccess_token, setRefresh_token,setUsername} =
     loginPageSlice.actions;
 export default loginPageSlice.reducer;
