@@ -271,6 +271,7 @@ main {
 .tags {
   display: flex;
   flex-direction: row;
+  margin-bottom: 15px;
 }
 
 .tags-container {
@@ -291,8 +292,11 @@ main {
   height: 20px;
   padding: 10px;
   text-align: center;
-  ::selection{
-    background-color: black;
-  }
 
+
+}
+
+.tag.selected {
+  background-color: black; /* Новый цвет для выбранного тега */
+  color: #fff; /* Цвет текста для выбранного тега */
 }

@@ -8,7 +8,6 @@ export interface IApiResponse {
 
     }
 
-
     count?: number,
     data?: {
         title: string,
@@ -25,6 +24,7 @@ export interface IApiResponse {
         title: string,
         uuid: string,
         filter(param: (item: any) => boolean): any[];
+        map(element: (item: any) => JSX.Element): any;
     }
     tags?:{
         name: string,

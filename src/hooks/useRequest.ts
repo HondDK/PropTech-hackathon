@@ -2,13 +2,30 @@ import { useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
 import {ILoginPage} from "../models/ILoginPage";
 
-interface Article {
+interface FormData {
+    append?(name: string, value: any): void;
+}
+
+interface Article extends FormData{
     email?: string;
     username?: string,
     password?: string,
     code?: number,
     access?: string,
     refresh?: string,
+    title?: string,
+    description?: string,
+    price?: number
+    tags?: string[],
+    files?: string[],
+    type?: number,
+    uuid?: string,
+    file?: any,
+    formData?: {
+        file: any;
+        type: number;
+    };
+
 }
 
 interface ResponseData extends ILoginPage {
@@ -17,15 +34,19 @@ interface ResponseData extends ILoginPage {
     refresh: string,
 }
 
-type ErrorType = any; // Здесь необходимо указать тип данных для ошибки
+type ErrorType = any;
 
 const useRequest = () => {
     const [responseData, setResponseData] = useState<ResponseData | null>(null);
     const [error, setError] = useState<ErrorType | null>(null);
 
-    const sendRequest = (url: string, article: Article) => {
+    const sendRequest = (url: string, article: Article, token?: string) => {
         axios
-            .post(url, article)
+            .post(url, article, {
+                headers: {
+                    Authorization: `Bearer ${token}` // Добавление JWT-токена в заголовок запроса
+                }
+            })
             .then((response: AxiosResponse<ResponseData>) => {
                 setResponseData(response.data);
             })
