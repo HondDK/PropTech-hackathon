@@ -3,6 +3,7 @@ import Header from '../components/UI/Header';
 import OrderBlock from '../components/UI/OrderBlock';
 import useFetchData from '../hooks/useFetchData';
 import Tags from '../components/UI/Tags';
+import RolePrivateComponents from "../helpers/RolePrivateComponents";
 
 const OrdersPage = () => {
     const BASE_URL_ORDERS = 'http://206.189.61.25:8003/apartx_orders/';
@@ -36,6 +37,7 @@ const OrdersPage = () => {
         <div>
             <Header></Header>
             <main>
+
                 <h1>Заказы({data?.count || 0})</h1>
                 <div className="orders_page_nav">
                     <input

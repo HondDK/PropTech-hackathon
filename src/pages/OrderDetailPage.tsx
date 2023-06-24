@@ -73,6 +73,7 @@ const OrderDetailPage = () => {
                             </div>
                         </div>
                     )}
+                    <h2>Отклики на заказ</h2>
                     {data && data.responses && data.responses.map((item: any) => (
                         <section className="order_detail_response">
                             <p>{item.user_email}</p>
