@@ -1,23 +1,21 @@
-import React, { HTMLProps } from 'react';
-import { useAppSelector } from '../hooks/useRedux';
-import { useJwt } from 'react-jwt';
-import { Link } from 'react-router-dom';
+import React, {HTMLProps} from 'react';
+import {useAppSelector} from '../hooks/useRedux';
+import {useJwt} from 'react-jwt';
 
 interface DecodedToken {
     groups?: string[];
 
 }
-const RolePrivateComponents = ({ children }: HTMLProps<HTMLElement>) => {
-    const { access_token } = useAppSelector((state) => state.loginPage);
 
-    const { decodedToken, isExpired } = useJwt<DecodedToken>(access_token);
+const RolePrivateComponents = ({children}: HTMLProps<HTMLElement>) => {
+    const {access_token} = useAppSelector((state) => state.loginPage);
 
-    console.log(decodedToken);
+    const {decodedToken, isExpired} = useJwt<DecodedToken>(access_token);
 
-    if (decodedToken && decodedToken.groups && !decodedToken.groups.includes('OWN01')) {
-        return <p>Исполнитель</p>;
+    if (decodedToken && decodedToken.groups && decodedToken.groups.includes('OWN01')) {
+        return <>{children}</>
     } else {
-        return <p>Заказчик</p>;
+        return <></>;
     }
 };
 

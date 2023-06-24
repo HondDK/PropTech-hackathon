@@ -3,14 +3,22 @@ import Header from '../components/UI/Header';
 import MainButton from '../components/UI/MainButton';
 import {useParams} from "react-router-dom";
 import useFetchData from "../hooks/useFetchData";
+import useRequest from "../hooks/useRequest";
+import {useAppSelector} from "../hooks/useRedux";
+import useFormInput from "../hooks/useFormInput";
 
 const OrderDetailPage = () => {
     const {uuid} = useParams();
     const BASE_URL = 'http://206.189.61.25:8003/apartx_orders/';
 
     const {data, error, isLoading} = useFetchData(`${BASE_URL}orders/orders/${uuid}`);
-
+    const {responseData, sendRequest} = useRequest();
+    const {access_token} = useAppSelector((state) => state.loginPage);
     const [showForm, setShowForm] = useState(false);
+
+    const text = useFormInput<string>('');
+    const hours = useFormInput<number>(0);
+
     const handleButtonClick = () => {
         setShowForm(true);
     };
@@ -18,6 +26,18 @@ const OrderDetailPage = () => {
     const handleCloseForm = () => {
         setShowForm(false);
     };
+
+    function handleSubmitOrder() {
+        const article = {
+            order: uuid,
+            text: text.value,
+            hours: hours.value,
+        }
+        const url = `${BASE_URL}orders/order_responses/`
+        sendRequest(url, article, access_token);
+
+    }
+
 
     return (
         <div>
@@ -59,11 +79,14 @@ const OrderDetailPage = () => {
                         <div className="overlay">
                             <div className="form-container">
                                 <form>
-                                    <label>Дата когда сможете взяться за работу</label>
-                                    <input type="date"/>
+                                    <label>Ожидаемое время выполнения работы(Часы)</label>
+                                    <input type="number" {...hours} />
                                     <label>Cообщение</label>
-                                    <input type="text"/>
-                                    <MainButton onClick={handleButtonClick}>Откликнуться</MainButton>
+                                    <input type="text" {...text}/>
+                                    <MainButton onClick={() => {
+                                        handleSubmitOrder();
+                                        handleCloseForm();
+                                    }}>Откликнуться</MainButton>
                                     <img
                                         alt="закрыть"
                                         src="https://sun9-10.userapi.com/impg/2Gu9oAhQ6rPXcJMOR7gHxZ6qlIDvAee8lYUtzw/QRB6snIoTDk.jpg?size=1024x1024&quality=96&sign=388c24d86fa488f7d9e0367e6fb21463&type=album"
@@ -78,7 +101,7 @@ const OrderDetailPage = () => {
                         <section className="order_detail_response">
                             <p>{item.user_email}</p>
                             <p>{item.text}</p>
-                            <p>{item.suggest_price}₸</p>
+                            <p>{item.hours} ч</p>
                         </section>
                     ))}
                 </article>

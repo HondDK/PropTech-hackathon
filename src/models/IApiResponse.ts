@@ -47,5 +47,5 @@
             uuid: string,
         }
 
-        map(element: (item: any) => JSX.Element): any;
+        map(element: (item: any) => void): any;
     }

@@ -21,6 +21,9 @@ interface Article extends FormData{
     type?: number,
     uuid?: string,
     file?: any,
+    hours?: number,
+    text?: string,
+    order?: string,
     formData?: {
         file: any;
         type: number;

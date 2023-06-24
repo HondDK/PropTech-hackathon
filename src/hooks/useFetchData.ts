@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import type {IApiResponse} from "../models/IApiResponse";
 
-const useFetchData = (url: string) => {
+const useFetchData = (url: string, jwtToken?: string) => {
     const [data, setData] = useState<IApiResponse | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
@@ -10,7 +10,12 @@ const useFetchData = (url: string) => {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                const response = await fetch(url);
+                const headers: HeadersInit = {};
+                if (jwtToken) {
+                    headers["Authorization"] = `Bearer ${jwtToken}`;
+                }
+
+                const response = await fetch(url, {headers});
                 if (!response.ok) {
                     throw new Error("Ошибка получения данных");
                 }
@@ -28,7 +33,7 @@ const useFetchData = (url: string) => {
         };
 
         fetchData();
-    }, [url]);
+    }, [url, jwtToken]);
 
     return {data, isLoading, error};
 };

@@ -37,7 +37,6 @@ const OrdersPage = () => {
         <div>
             <Header></Header>
             <main>
-
                 <h1>Заказы({data?.count || 0})</h1>
                 <div className="orders_page_nav">
                     <input
