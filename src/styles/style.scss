@@ -31,10 +31,12 @@ header {
     width: 50px;
     height: 50px;
   }
+
 }
 
 form {
   @extend %shadow_block;
+  margin-top: 25px;
   padding: 15px;
   display: flex;
   flex-direction: column;
@@ -59,7 +61,7 @@ form {
 .mainBtn {
   border-radius: 10px;
   border: 1px solid;
-  background-color: white;
+  background-color: #E6F0D5;
   font-family: 'Inter', sans-serif;
   height: 40px;
 }
@@ -71,18 +73,29 @@ main {
       padding: 10px;
       padding-top: 0px;
       font-family: 'Inter', sans-serif;
-      .order_block_head_text {
-        font-size: 16px;
-      }
 
-      .order_block_description_text {
-        font-size: 14px;
-      }
+    }
 
-      .order_block_description_price {
-        font-size: 14px;
-        text-align: end;
-      }
+    .order_block_detail {
+      @extend %shadow_block;
+      padding: 10px;
+      padding-top: 0px;
+      font-family: 'Inter', sans-serif;
+
+    }
+
+    .order_block_head_text {
+      font-size: 16px;
+    }
+
+    .order_block_description_text {
+      font-size: 14px;
+    }
+
+    .order_block_description_price {
+      font-size: 14px;
+      text-align: end;
     }
   }
 }
+
