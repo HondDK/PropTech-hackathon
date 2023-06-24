@@ -13,6 +13,7 @@ import PrivateRoute from "./helpers/PrivateRoute";
 import NewOrderCreate from "./pages/NewOrderCreate";
 import AcceptedOrders from "./pages/AcceptedOrders";
 import MyResponse from "./pages/MyResponse";
+import MyOrders from "./pages/MyOrders";
 
 function App() {
     const persistor = persistStore(store);
@@ -29,6 +30,7 @@ function App() {
                                 <Route element={<AcceptedOrders/>} path={"/accepted_orders"}/>
                                 <Route element={<UserProfilePage/>} path="/user_profile/:uuid"/>
                                 <Route element={<NewOrderCreate/>} path={"/new_order_create"}/>
+                                <Route element={<MyOrders/>} path="/my_orders"/>
                                 <Route element={<MyResponse/>} path={"/my_response"}/>
                             </Route>
                         </Routes>
