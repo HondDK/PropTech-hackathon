@@ -10,6 +10,8 @@ import {persistStore} from "redux-persist";
 import {store} from "./redux/store";
 import {Provider} from "react-redux";
 import PrivateRoute from "./helpers/PrivateRoute";
+import NewOrderCreate from "./pages/NewOrderCreate";
+import AcceptedOrders from "./pages/AcceptedOrders";
 
 function App() {
     const persistor = persistStore(store);
@@ -23,7 +25,9 @@ function App() {
                             <Route element={<OrdersPage/>} path="/orders"/>
                             <Route element={<OrderDetailPage/>} path="/order_detail/"/>
                             <Route element={<PrivateRoute/>}>
+                                <Route element={<AcceptedOrders/>} path={"/accepted_orders"}/>
                                 <Route element={<UserProfilePage/>} path="/user_profile/:uuid"/>
+                                <Route element={<NewOrderCreate/>} path={"/new_order_create"}/>
                             </Route>
                         </Routes>
                     </Router>

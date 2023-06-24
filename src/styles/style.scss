@@ -160,6 +160,7 @@ main {
         form{
           margin: 0;
         }
+
         background-color: white;
         @extend %shadow_block;
 
@@ -169,13 +170,35 @@ main {
           font-family: 'Inter', sans-serif;
         }
       }
-      img{
+
+      img {
         margin: 0 auto;
         width: 70px;
         height: 70px;
       }
     }
+  }
 
+  .new_order_create {
+    @extend %shadow_block;
+    width: 100%;
+
+    form {
+
+      input {
+        font-family: 'Inter', sans-serif;
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid black;
+      }
+
+      textarea {
+        font-family: 'Inter', sans-serif;
+        height: 150px;
+        border-radius: 5px;
+        border: 1px solid black;
+      }
+    }
   }
 }
 
@@ -227,4 +250,22 @@ main {
     }
   }
 }
+
+.image-upload {
+  font-family: 'Inter', sans-serif;
+  border: 2px dashed #ccc;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px ;
+}
+
+.preview-image {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-top: 10px;
+}
+
 
