@@ -16,6 +16,10 @@ export interface IApiResponse {
         uuid: string,
         filter(param: (item: any) => boolean): any[];
     }
+    tags?:{
+        name: string,
+        uuid: string,
+    }
 
     map(element: (item: any) => JSX.Element): any;
 }
