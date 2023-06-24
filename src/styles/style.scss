@@ -268,9 +268,16 @@ main {
   margin-top: 10px;
 }
 
-.tags{
+.tags {
   display: flex;
   flex-direction: row;
+}
+
+.tags-container {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex; /* Добавлено */
 }
 
 .tag {
@@ -280,12 +287,12 @@ main {
   margin-right: 5px;
   overflow: hidden;
   white-space: nowrap;
-  width: 100%;
   border-radius: 10px;
-
   height: 20px;
   padding: 10px;
   text-align: center;
+  ::selection{
+    background-color: black;
+  }
 
 }
-

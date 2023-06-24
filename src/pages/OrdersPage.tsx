@@ -1,25 +1,28 @@
 import React, {useState} from 'react';
-import Header from "../components/UI/Header";
-import OrderBlock from "../components/UI/OrderBlock";
-import useFetchData from "../hooks/useFetchData";
-import Tags from "../components/UI/Tags";
-
+import Header from '../components/UI/Header';
+import OrderBlock from '../components/UI/OrderBlock';
+import useFetchData from '../hooks/useFetchData';
+import Tags from '../components/UI/Tags';
 
 const OrdersPage = () => {
-    const BASE_URL_ORDERS = "http://206.189.61.25:8003/apartx_orders/";
+    const BASE_URL_ORDERS = 'http://206.189.61.25:8003/apartx_orders/';
 
     const {data, error, isLoading} = useFetchData(`${BASE_URL_ORDERS}orders/orders/`);
 
-    const [searchQuery, setSearchQuery] = useState("");
+    const [searchQuery, setSearchQuery] = useState('');
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
-    const filteredItems = data && data.results
-        ? data.results.filter((item: any) => {
-            const titleMatch = item.title && item.title.toLowerCase().includes(searchQuery.toLowerCase());
-            const tagsMatch = selectedTags.length === 0 || selectedTags.some((tag) => item.tags.includes(tag));
-            return titleMatch && tagsMatch;
-        })
-        : [];
+
+
+
+    const filteredItems =
+        data && data.results
+            ? data.results.filter((item: any) => {
+                const titleMatch = item.title && item.title.toLowerCase().includes(searchQuery.toLowerCase());
+                const tagsMatch = selectedTags.length === 0 || selectedTags.some((tag) => item.tags.includes(tag));
+                return titleMatch && tagsMatch;
+            })
+            : [];
 
     const handleTagClick = (tag: string) => {
         if (selectedTags.includes(tag)) {
@@ -33,7 +36,7 @@ const OrdersPage = () => {
         <div>
             <Header></Header>
             <main>
-                <h1>Заказы({data?.count})</h1>
+                <h1>Заказы({data?.count || 0})</h1>
                 <div className="orders_page_nav">
                     <input
                         className="orders_page_sort"
@@ -50,7 +53,7 @@ const OrdersPage = () => {
                     />
                 </div>
                 <article>
-                    <Tags data={filteredItems} selectedTags={selectedTags} onTagClick={handleTagClick}/>
+                    <Tags data={data?.results || []} selectedTags={selectedTags} onTagClick={handleTagClick}/>
                     <OrderBlock data={filteredItems}/>
                 </article>
             </main>

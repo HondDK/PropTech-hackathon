@@ -1,4 +1,14 @@
 export interface IApiResponse {
+
+    tagData?: {
+        results?: {
+            uuid: string,
+            name: string,
+        }
+
+    }
+
+
     count?: number,
     data?: {
         title: string,
