@@ -1,14 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from "../components/UI/Header";
 import MainButton from "../components/UI/MainButton";
 
 const OrderDetailPage = () => {
+
+
+
     return (
         <div>
             <Header></Header>
             <h1>Детали заказа</h1>
             <main>
+
                 <article>
+
                     <section className={"order_block_detail"}>
                         <div style={{flexDirection: "row"}}>
                             <p className={"order_block_head_text"}>Убрать комнату</p> <p
