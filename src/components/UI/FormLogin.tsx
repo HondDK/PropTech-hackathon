@@ -2,10 +2,12 @@ import React, {useState,} from 'react'
 import MainButton from "./MainButton";
 import useFormInput from "../../hooks/useFormInput"
 import useRequest from "../../hooks/useRequest";
-import {useAppDispatch, useAppSelector} from "../../hooks/useRedux";
+import {useAppDispatch} from "../../hooks/useRedux";
 import {setAccess_token, setEmail, setRefresh_token} from "../../redux/reducers/LoginPageSlice";
+import {useNavigate} from "react-router-dom";
 
 const FormLogin = () => {
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     const BASE_URL_REG = "http://206.189.61.25:8001/apartx_reg/"
@@ -64,6 +66,8 @@ const FormLogin = () => {
         if (responseData !== null) {
             dispatch(setAccess_token(responseData.access))
             dispatch(setRefresh_token(responseData.refresh))
+            navigate("/orders");
+
         }
         console.log(responseData)
     };

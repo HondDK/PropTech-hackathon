@@ -8,7 +8,8 @@ import UserProfilePage from "./pages/UserProfilePage";
 import {PersistGate} from "redux-persist/integration/react";
 import {persistStore} from "redux-persist";
 import {store} from "./redux/store";
-import { Provider } from "react-redux";
+import {Provider} from "react-redux";
+import PrivateRoute from "./helpers/PrivateRoute";
 
 function App() {
     const persistor = persistStore(store);
@@ -21,7 +22,9 @@ function App() {
                             <Route element={<LoginPage/>} path="/"/>
                             <Route element={<OrderPage/>} path="/orders"/>
                             <Route element={<OrderDetailPage/>} path="/order_detail"/>
-                            <Route element={<UserProfilePage/>} path="/user_profile"/>
+                            <Route element={<PrivateRoute/>}>
+                                <Route element={<UserProfilePage/>} path="/user_profile"/>
+                            </Route>
                         </Routes>
                     </Router>
                 </PersistGate>
