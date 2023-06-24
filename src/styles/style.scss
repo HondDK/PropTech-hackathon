@@ -133,6 +133,7 @@ main {
 
     .order_block_head_text {
       font-size: 16px;
+
     }
 
     .order_block_description_text {
@@ -141,7 +142,7 @@ main {
 
     .order_block_description_price {
       font-size: 14px;
-      text-align: end;
+
     }
 
     .overlay {
@@ -299,4 +300,11 @@ main {
 .tag.selected {
   background-color: black; /* Новый цвет для выбранного тега */
   color: #fff; /* Цвет текста для выбранного тега */
+}
+
+.order_detail_response{
+  font-family: 'Inter', sans-serif;
+  margin-top: 10px;
+  @extend %shadow_block;
+  padding: 10px;
 }

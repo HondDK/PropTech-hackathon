@@ -23,7 +23,7 @@ function App() {
                         <Routes>
                             <Route element={<LoginPage/>} path="/"/>
                             <Route element={<OrdersPage/>} path="/orders"/>
-                            <Route element={<OrderDetailPage/>} path="/order_detail/"/>
+                            <Route element={<OrderDetailPage/>} path="/order_detail/:uuid"/>
                             <Route element={<PrivateRoute/>}>
                                 <Route element={<AcceptedOrders/>} path={"/accepted_orders"}/>
                                 <Route element={<UserProfilePage/>} path="/user_profile/:uuid"/>

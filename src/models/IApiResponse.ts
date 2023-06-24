@@ -1,35 +1,51 @@
-export interface IApiResponse {
+    export interface IApiResponse {
 
-    tagData?: {
+        tagData?: {
+            results?: {
+                uuid: string,
+                name: string,
+            }
+
+        }
+
+        count?: number,
+        data?: {
+            title: string,
+            uuid: string,
+            price: string,
+        },
+        title?: string,
+        uuid?: string,
+        price?: number,
+        description? : string,
+        files?: any[],
+
         results?: {
+            is_employee_selected: boolean,
+            price: number,
+            tags: {
+                uuid: string,
+                name: string,
+            }
+            title: string,
             uuid: string,
-            name: string,
+            filter(param: (item: any) => boolean): any[];
+            map(element: (item: any) => JSX.Element): any;
         }
 
-    }
-
-    count?: number,
-    data?: {
-        title: string,
-        uuid: string,
-        price: string,
-    },
-    results?: {
-        is_employee_selected: boolean,
-        price: number,
-        tags: {
+        responses?:{
             uuid: string,
-            name: string,
+            user_email: string,
+            text: string,
+            suggest_price: number
+            map(element: (item: any) => JSX.Element): any;
         }
-        title: string,
-        uuid: string,
-        filter(param: (item: any) => boolean): any[];
+
+
+        tags?:{
+            name: string,
+            uuid: string,
+        }
+
         map(element: (item: any) => JSX.Element): any;
     }
-    tags?:{
-        name: string,
-        uuid: string,
-    }
-
-    map(element: (item: any) => JSX.Element): any;
-}
