@@ -6,6 +6,7 @@ import ImageUpload from "../components/ImageUpload";
 import useRequest from "../hooks/useRequest";
 import {useAppSelector} from "../hooks/useRedux";
 import useFetchData from "../hooks/useFetchData";
+import axios from "axios";
 
 
 const NewOrderCreate = () => {
@@ -28,9 +29,12 @@ const NewOrderCreate = () => {
     const HeadText = useFormInput<string>("");
     const DescriptionText = useFormInput<string>("")
     const PriceText = useFormInput<number>(0)
+    const square = useFormInput<number>(0)
 
     const {responseData, error, sendRequest} = useRequest();
     const {access_token} = useAppSelector((state) => state.loginPage);
+
+    const [assesed_price, setAssesed_price] = useState(0);
 
     function handleSubmit() {
         const article = {
@@ -39,6 +43,7 @@ const NewOrderCreate = () => {
             price: PriceText.value,
             tags: tags,
             files: uploadedImages,
+            square: square.value,
         };
 
         const url = `${BASE_URL}orders/orders/`;
@@ -73,6 +78,28 @@ const NewOrderCreate = () => {
         await handleImageUpload(remainingFiles);
     };
 
+    function estimatePrice() {
+        const url = `${BASE_URL}orders/estimate_price/estimate?square=${square.value}`
+
+        const config = {
+            headers: {
+                'Authorization': `Bearer ${access_token}`
+            }
+        };
+        axios.get(url, config)
+            .then(response => {
+                // Обработка ответа от сервера
+                console.log(response.data.assesed_price)
+
+                setAssesed_price(Math.floor(response.data.assesed_price * 100) / 100);
+
+            })
+            .catch(error => {
+                // Обработка ошибок
+                console.log(error)
+            });
+
+    }
 
     return (
         <div>
@@ -88,6 +115,10 @@ const NewOrderCreate = () => {
                             {...DescriptionText}
                             className="new_order_create_form_input"
                         />
+                        <label>Укажите площадь помещения(м²) для рекомендованной стоимости</label>
+                        <input type={"number"} {...square}/>
+                        <MainButton onClick={estimatePrice}>Посчитать стоимость</MainButton>
+                        <label>Рекомендованная стоимость: {assesed_price} KZT</label>
                         <label>Цена за заказ в тенге</label>
                         <input type="number" {...PriceText} />
                         <ImageUpload onImageUpload={handleImageUpload} maxImages={5}/>

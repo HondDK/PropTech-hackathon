@@ -77,7 +77,7 @@ const MyProfilePage = () => {
                         <p className={"user_profile_text_description"}>{data?.description}</p>
                     </section>
                     <section className={"user_profile_info"}>
-                        <p className={"user_profile_info_rating"}>{data?.rate}</p>
+                        <p className={"user_profile_info_rating"}> Рейтинг пользователя: {data?.rate}</p>
                         <img
                             alt={"фото профиля"}
                             src={data?.avatar}

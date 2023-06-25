@@ -45,4 +45,4 @@ const MyResponse = () => {
     )
 }
 
-export default MyResponse
+export default MyResponse;
