@@ -1,0 +1,23 @@
+{
+    "Тілді өзгерту":"Тілді өзгерту",
+    "kz": "Қазақ",
+    "ru":"Орыс",
+    "en": "Ағылшын",
+    "main.menu":"Мәзір",
+    "auth.name": "Авторизация",
+    "auth.register":"Тіркелу",
+    "auth.enter": "Кіру",
+    "auth.email": "Поштаны енгізіңіз",
+    "auth.guess_password":"Пароль ойлап табыңыз",
+    "auth.enter_password":"Құпия сөзді енгізіңіз",
+    "apt.get_code":"Кодты алу",
+    "auth.confirm_code":"Кодты растау",
+    "orders.негізгі":"Тапсырыстар",
+    "orders.choose_response":"Орындаушыны таңдау",
+    "profile.header":"Профиль",
+    "profile.active_orders":"Белсенді тапсырыстар",
+    "profile.created_orders": "Жасалған тапсырыстар",
+    "profile.my_responses":"Менің жауаптарым",
+    "image_upload.take_to":"Тасымалдау",
+    "image_upload.take_after": "фотосурет осында немесе басыңыз фотосуретті таңдау үшін"
+    }

@@ -1,0 +1,23 @@
+{
+  "Change language": "Change language",
+  "kz": "Kazakh",
+  "ru": "Russian",
+  "en": "English",
+  "main.menu": "Menu",
+  "auth.name ": "Authorization",
+  "auth.register": "Register",
+  "auth.enter": "Log in",
+  "auth.email": "Enter mail",
+  "auth.guess_password": "Come up with password",
+  "auth.enter_password": "Enter password",
+  "auth.get_code": "Get code",
+  "auth.confirm_code": "Confirm code",
+  "orders.main": "Orders",
+  "orders.choose_response": "Select a performer",
+  "profile.header": "Profile",
+  "profile.active_orders": "Active orders",
+  "profile.created_orders": "Created orders",
+  "profile.my_responses": "My responses",
+  "image_upload.take_to": "Move to",
+  "image_upload.take_after": "photo here, or click to select a photo"
+}

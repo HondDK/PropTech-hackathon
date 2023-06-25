@@ -1,0 +1,23 @@
+{
+    "Сменить язык": "Сменить язык",
+    "kz": "Казахский",
+    "ru": "Русский",
+    "en": "Английский",
+    "main.menu": "Меню",
+    "auth.name": "Авторизация",
+    "auth.register": "Зарегистрироваться",
+    "auth.enter": "Войти",
+    "auth.email": "Введите почту",
+    "auth.guess_password": "Придумайте пароль",
+    "auth.enter_password": "Введите пароль",
+    "auth.get_code": "Получить код",
+    "auth.confirm_code": "Подтвердить код",
+    "orders.main": "Заказы",
+    "orders.choose_response": "Выбрать исполнителя",
+    "profile.header": "Профиль",
+    "profile.active_orders": "Активные заказы",
+    "profile.created_orders": "Созданные заказы",
+    "profile.my_responses": "Мои отклики",
+    "image_upload.take_to": "Перенесите до",
+    "image_upload.take_after": "фото сюда, или нажмите чтобы выбрать фото"
+  }
