@@ -4,10 +4,12 @@ import OrderBlock from '../components/UI/OrderBlock';
 import useFetchData from '../hooks/useFetchData';
 import Tags from '../components/UI/Tags';
 import OWNRolePrivateComponents from "../helpers/OWNRolePrivateComponents";
+import {useTranslation} from "react-i18next";
 
 const OrdersPage = () => {
-    const BASE_URL_ORDERS = 'http://206.189.61.25:8003/apartx_orders/';
+    const { t } = useTranslation();
 
+    const BASE_URL_ORDERS = 'http://206.189.61.25:8003/apartx_orders/';
     const {data, error, isLoading} = useFetchData(`${BASE_URL_ORDERS}orders/orders/`);
 
     const [searchQuery, setSearchQuery] = useState('');
@@ -37,7 +39,7 @@ const OrdersPage = () => {
         <div>
             <Header></Header>
             <main>
-                <h1>Заказы({data?.count || 0})</h1>
+                <h1>{t('orders.main')}({data?.count || 0})</h1>
                 <div className="orders_page_nav">
                     <input
                         className="orders_page_sort"

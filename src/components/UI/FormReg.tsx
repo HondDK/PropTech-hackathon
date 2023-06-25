@@ -5,8 +5,9 @@ import useFormInput from '../../hooks/useFormInput';
 import useRequest from '../../hooks/useRequest';
 import {setEmail} from '../../redux/reducers/LoginPageSlice';
 import MainButton from './MainButton';
-
+import {useTranslation} from "react-i18next";
 const FormReg = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
@@ -65,28 +66,28 @@ const FormReg = () => {
 
     return (
         <div>
-            <h1>Регистрация</h1>
+            <h1>{t('auth.register')}</h1>
             {!isCodeSent && (
                 <form>
-                    <label>Введите почту</label>
+                    <label>{t('auth.email')}</label>
                     <input type="email" placeholder="@youmail" {...email} />
-                    <MainButton onClick={getCode}>Получить код</MainButton>
+                    <MainButton onClick={getCode}>{t('auth.get_code')}</MainButton>
                 </form>
             )}
             {isCodeSent && !isCodeVerified && (
                 <form>
                     <label>Введите полученный код</label>
                     <input type="number" placeholder="12345" {...code} />
-                    <MainButton onClick={handleSubmitCode}>Подтвердить код</MainButton>
+                    <MainButton onClick={handleSubmitCode}>{t('auth.confirm_code')}</MainButton>
                 </form>
             )}
             {isCodeVerified && (
                 <form>
-                    <label>Придумайте пароль</label>
+                    <label>{t('auth.guess_password')}</label>
                     <input type="password" placeholder="1234@#" {...pass} />
-                    <label>Повторите пароль</label>
+                    <label>{t('auth.enter_password')}</label>
                     <input type="password" placeholder="1234@#" {...pass_check} />
-                    <MainButton onClick={handleReg}>Зарегистрироваться</MainButton>
+                    <MainButton onClick={handleReg}>{t('auth.register')}</MainButton>
                 </form>
             )}
         </div>

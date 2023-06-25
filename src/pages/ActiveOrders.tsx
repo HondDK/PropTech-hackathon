@@ -74,7 +74,7 @@ const ActiveOrders = () => {
         <Header></Header>
         <main>
           <article>
-            <h1>Мои Заказы</h1>
+            <h1>Активные заказы</h1>
             {data && data.map((item: any) =>
                 <div>
                   <section className={"order_block"} key={item.uuid}>

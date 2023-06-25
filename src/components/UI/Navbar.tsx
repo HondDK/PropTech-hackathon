@@ -9,8 +9,11 @@ import MainButton from "./MainButton";
 import {useAppSelector} from "../../hooks/useRedux";
 import useFetchData from "../../hooks/useFetchData";
 import useRequest from "../../hooks/useRequest";
+import {useTranslation} from "react-i18next";
+import LanguageSwitcher from "../../i18/LanguageSwitcher";
 
 const Navbar = () => {
+    const {t} = useTranslation();
     const {access_token} = useAppSelector((state) => state.loginPage);
     const BASE_URL =
         "http://206.189.61.25:8003/apartx_orders/orders/orders/my_not_done";
@@ -36,26 +39,31 @@ const Navbar = () => {
         console.log(responseData)
     }
 
+    function logout() {
+        localStorage.clear()
+        window.location.reload();
+    }
+
     return (
         <Menu customBurgerIcon={<CustomMenuIcon/>} width={"100%"} right disableAutoFocus={true}>
             <div className={"menu"}>
                 <Link to={"/user_profile"}>
-                    <MainButton>Профиль</MainButton>
+                    <MainButton>{t('main.menu')}</MainButton>
                 </Link>
                 <Link to={"/active_orders"}>
-                    <MainButton>Активные заказы</MainButton>
+                    <MainButton>{t('profile.active_orders')}</MainButton>
                 </Link>
-                <EMPRolePrivateComponents>
+                <OWNRolePrivateComponents>
                     <Link to={"/my_orders"}>
-                        <MainButton>Созданные заказы</MainButton>
+                        <MainButton>{t('profile.created_orders')}</MainButton>
                         <Link to={"/moderation_on_review"}>
                             <MainButton>Отчеты на мои заказы</MainButton>
                         </Link>
                     </Link>
-                </EMPRolePrivateComponents>
+                </OWNRolePrivateComponents>
                 <EMPRolePrivateComponents>
                     <Link to={"/my_response"}>
-                        <MainButton>Мои отклики</MainButton>
+                        <MainButton>{t('profile.my_responses')}</MainButton>
                     </Link>
                 </EMPRolePrivateComponents>
                 <EMPRolePrivateComponents>
@@ -64,6 +72,8 @@ const Navbar = () => {
                 <OWNRolePrivateComponents>
                     <MainButton onClick={changeRoleEmp}>Сменить роль на исполнителя</MainButton>
                 </OWNRolePrivateComponents>
+                <LanguageSwitcher></LanguageSwitcher>
+                <MainButton onClick={logout}>Выйти из профиля</MainButton>
             </div>
         </Menu>
     );

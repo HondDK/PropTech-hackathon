@@ -5,8 +5,11 @@ import useRequest from "../../hooks/useRequest";
 import {useAppDispatch} from "../../hooks/useRedux";
 import {setAccess_token, setEmail, setRefresh_token} from "../../redux/reducers/LoginPageSlice";
 import {Link, useNavigate} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 
 const FormLogin = () => {
+    const {t} = useTranslation();
+
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
@@ -41,18 +44,19 @@ const FormLogin = () => {
 
     return (
         <div>
-            <h1>Авторизация</h1>
-
+            <h1>{t('auth.name')}</h1>
             <form>
-                <label>Введите почту</label>
+                <label>{t('auth.email')}</label>
                 <input type="text" placeholder="@youmail" {...email}/>
-                <label>Введите пароль</label>
+                <label>{t('auth.enter_password')}</label>
                 <input type="password" placeholder="12345" {...pass}/>
-                <MainButton onClick={handleLogin}>Войти</MainButton>
+                <MainButton onClick={handleLogin}>{t('auth.enter')}</MainButton>
             </form>
-            <Link to={"/reg"}>
-                <MainButton>Регистрация</MainButton>
-            </Link>
+            <div className={"reg_btn"}>
+                <Link to={"/reg"}>
+                    <MainButton>{t('auth.register')}</MainButton>
+                </Link>
+            </div>
         </div>
     )
 }

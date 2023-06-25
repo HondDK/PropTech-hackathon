@@ -18,8 +18,11 @@ import RegPage from "./pages/RegPage";
 import ModerationPageOnReview from "./pages/ModerationPageOnReview";
 import ModerationPageInProgress from "./pages/ModerationPageInProgress";
 import RatingUserPage from "./pages/RatingUserPage";
-
+import {I18nextProvider, useTranslation} from "react-i18next";
+import i18 from "./i18/i18next";
 function App() {
+    const {t, i18n} = useTranslation();
+
     const persistor = persistStore(store);
 
     return (
@@ -27,24 +30,26 @@ function App() {
         <div className="App">
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
-                    <Router>
-                        <Routes>
-                            <Route element={<RegPage/>} path="/reg"/>
-                            <Route element={<LoginPage/>} path="/login"/>
-                            <Route element={<OrdersPage/>} path="/orders"/>
-                            <Route element={<OrderDetailPage/>} path="/order_detail/:uuid"/>
-                            <Route element={<PrivateRoute/>}>
-                                <Route element={<ActiveOrders/>} path={"/active_orders"}/>
-                                <Route element={<MyProfilePage/>} path="/user_profile"/>
-                                <Route element={<NewOrderCreate/>} path={"/new_order_create"}/>
-                                <Route element={<MyOrders/>} path="/my_orders"/>
-                                <Route element={<MyResponse/>} path={"/my_response"}/>
-                                <Route element={<ModerationPageOnReview/>} path={"/moderation_on_review"}/>
-                                <Route element={<ModerationPageInProgress/>} path={"/moderation_in_progress"}/>
-                                <Route element={<RatingUserPage/>} path={"/rating_users"}/>
-                            </Route>
-                        </Routes>
-                    </Router>
+                    <I18nextProvider i18n={i18}>
+                        <Router>
+                            <Routes>
+                                <Route element={<RegPage/>} path="/reg"/>
+                                <Route element={<LoginPage/>} path="/login"/>
+                                <Route element={<OrdersPage/>} path="/orders"/>
+                                <Route element={<OrderDetailPage/>} path="/order_detail/:uuid"/>
+                                <Route element={<PrivateRoute/>}>
+                                    <Route element={<ActiveOrders/>} path={"/active_orders"}/>
+                                    <Route element={<MyProfilePage/>} path="/user_profile"/>
+                                    <Route element={<NewOrderCreate/>} path={"/new_order_create"}/>
+                                    <Route element={<MyOrders/>} path="/my_orders"/>
+                                    <Route element={<MyResponse/>} path={"/my_response"}/>
+                                    <Route element={<ModerationPageOnReview/>} path={"/moderation_on_review"}/>
+                                    <Route element={<ModerationPageInProgress/>} path={"/moderation_in_progress"}/>
+                                    <Route element={<RatingUserPage/>} path={"/rating_users"}/>
+                                </Route>
+                            </Routes>
+                        </Router>
+                    </I18nextProvider>
                 </PersistGate>
             </Provider>
         </div>
