@@ -15,6 +15,8 @@ import MyResponse from "./pages/MyResponse";
 import MyOrders from "./pages/MyOrders";
 import ActiveOrders from "./pages/ActiveOrders";
 import RegPage from "./pages/RegPage";
+import ModerationPageOnReview from "./pages/ModerationPageOnReview";
+import ModerationPageInProgress from "./pages/ModerationPageInProgress";
 
 function App() {
     const persistor = persistStore(store);
@@ -36,6 +38,8 @@ function App() {
                                 <Route element={<NewOrderCreate/>} path={"/new_order_create"}/>
                                 <Route element={<MyOrders/>} path="/my_orders"/>
                                 <Route element={<MyResponse/>} path={"/my_response"}/>
+                                <Route element={<ModerationPageOnReview/>} path={"/moderation_on_review"}/>
+                                <Route element={<ModerationPageInProgress/>} path={"/moderation_in_progress"}/>
                             </Route>
                         </Routes>
                     </Router>

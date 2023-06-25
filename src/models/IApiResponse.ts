@@ -10,7 +10,7 @@
             }
 
         }
-
+        reports?: any;
         count?: number,
         data?: {
             title: string,

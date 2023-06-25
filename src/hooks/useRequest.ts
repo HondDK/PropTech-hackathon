@@ -45,22 +45,24 @@ const useRequest = () => {
     const [responseData, setResponseData] = useState<ResponseData | null>(null);
     const [error, setError] = useState<ErrorType | null>(null);
 
-    const sendRequest = (url: string, article: Article, token?: string) => {
+    const sendRequest = (url: string, article?: Article, token?: string) => {
         const headers: { [key: string]: string } = {};
         if (token) {
             headers['Authorization'] = `Bearer ${token}`;
         }
 
-        axios
-            .post(url, article, {
-                headers: headers
-            })
-            .then((response: AxiosResponse<ResponseData>) => {
-                setResponseData(response.data);
-            })
-            .catch((error: ErrorType) => {
-                setError(error);
-            });
+        if (article) { // Проверяем, существует ли article
+            axios
+                .post(url, article, {
+                    headers: headers
+                })
+                .then((response: AxiosResponse<ResponseData>) => {
+                    setResponseData(response.data);
+                })
+                .catch((error: ErrorType) => {
+                    setError(error);
+                });
+        }
     };
 
 
