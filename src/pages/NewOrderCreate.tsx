@@ -7,9 +7,11 @@ import useRequest from "../hooks/useRequest";
 import {useAppSelector} from "../hooks/useRedux";
 import useFetchData from "../hooks/useFetchData";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 
 const NewOrderCreate = () => {
+    const navigate = useNavigate();
     const BASE_URL = "http://206.189.61.25:8003/apartx_orders/"
 
     const {data, isLoading} = useFetchData(`${BASE_URL}orders/tags`);
@@ -48,6 +50,7 @@ const NewOrderCreate = () => {
 
         const url = `${BASE_URL}orders/orders/`;
         sendRequest(url, article, access_token);
+        navigate("/orders");
     }
 
 

@@ -4,9 +4,13 @@ import { useAppSelector } from "../hooks/useRedux";
 const PrivateRoutes = () => {
     const { access_token } = useAppSelector((state) => state.loginPage);
     const location = useLocation();
-
+    const {is_banned} = useAppSelector((state) => state.loginPage);
     const isLoginPage = location.pathname === "/";
 
+    if (is_banned) {
+        // Если пользователь находится в бане, перенаправляем его на страницу с предупреждением или другую нужную вам страницу
+        return <Navigate to="/ban" />;
+}
     if (access_token) {
         if (isLoginPage) {
             return <Navigate to="/orders" />;

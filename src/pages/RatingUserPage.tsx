@@ -1,7 +1,7 @@
 import React from 'react'
 import {useAppSelector} from "../hooks/useRedux";
 import useFetchData from "../hooks/useFetchData";
-import useRequest from "../hooks/useRequest";
+
 import Header from "../components/UI/Header";
 
 const RatingUserPage = () => {
@@ -9,8 +9,6 @@ const RatingUserPage = () => {
   const BASE_URL =
       "http://206.189.61.25:8002/apartx_auth/profile/profile/employees_rating/";
   const {data, isLoading, error} = useFetchData(BASE_URL, access_token);
-  const {responseData, sendRequest} = useRequest();
-
   return (
       <div>
         <div>

@@ -23,7 +23,7 @@ const ModerationPageInProgress = () => {
             <Header></Header>
             <main>
                 <article>
-                    <h1>Отзывы на мои заказы</h1>
+                    <h1>Текущие заказы</h1>
                     {data && data.map((item: any) =>
                         <div>
                             <section className={"order_block"} key={item.uuid}>

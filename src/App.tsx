@@ -20,13 +20,14 @@ import ModerationPageInProgress from "./pages/ModerationPageInProgress";
 import RatingUserPage from "./pages/RatingUserPage";
 import {I18nextProvider, useTranslation} from "react-i18next";
 import i18 from "./i18/i18next";
+import BannedPage from "./pages/BannedPage";
+
 function App() {
     const {t, i18n} = useTranslation();
 
     const persistor = persistStore(store);
 
     return (
-
         <div className="App">
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
@@ -37,6 +38,7 @@ function App() {
                                 <Route element={<LoginPage/>} path="/login"/>
                                 <Route element={<OrdersPage/>} path="/orders"/>
                                 <Route element={<OrderDetailPage/>} path="/order_detail/:uuid"/>
+                                <Route element={<BannedPage/>} path="/ban"/>
                                 <Route element={<PrivateRoute/>}>
                                     <Route element={<ActiveOrders/>} path={"/active_orders"}/>
                                     <Route element={<MyProfilePage/>} path="/user_profile"/>

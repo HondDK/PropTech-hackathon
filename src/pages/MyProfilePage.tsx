@@ -96,7 +96,7 @@ const MyProfilePage = () => {
                                             newDescription();
                                             handleCloseForm();
                                         }}>Изменить</MainButton>
-                                        <img
+                                        <img className={"img_overlay"}
                                             alt="закрыть"
                                             src="https://sun9-10.userapi.com/impg/2Gu9oAhQ6rPXcJMOR7gHxZ6qlIDvAee8lYUtzw/QRB6snIoTDk.jpg?size=1024x1024&quality=96&sign=388c24d86fa488f7d9e0367e6fb21463&type=album"
                                             onClick={handleCloseForm}

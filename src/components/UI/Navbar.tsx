@@ -4,7 +4,7 @@ import {slide as Menu} from 'react-burger-menu'
 import CustomMenuIcon from "./CustomMenuIcon";
 import OWNRolePrivateComponents from "../../helpers/OWNRolePrivateComponents";
 import EMPRolePrivateComponents from "../../helpers/EMPRolePrivateComponents";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import MainButton from "./MainButton";
 import {useAppSelector} from "../../hooks/useRedux";
 import useFetchData from "../../hooks/useFetchData";
@@ -13,6 +13,8 @@ import {useTranslation} from "react-i18next";
 import LanguageSwitcher from "../../i18/LanguageSwitcher";
 
 const Navbar = () => {
+    const navigate = useNavigate();
+
     const {t} = useTranslation();
     const {access_token} = useAppSelector((state) => state.loginPage);
     const BASE_URL =
@@ -42,26 +44,34 @@ const Navbar = () => {
     function logout() {
         localStorage.clear()
         window.location.reload();
+        navigate("/orders")
     }
 
     return (
         <Menu customBurgerIcon={<CustomMenuIcon/>} width={"100%"} right disableAutoFocus={true}>
             <div className={"menu"}>
                 <Link to={"/user_profile"}>
-                    <MainButton>{t('main.menu')}</MainButton>
+                    <MainButton>Профиль</MainButton>
                 </Link>
-                <Link to={"/active_orders"}>
-                    <MainButton>{t('profile.active_orders')}</MainButton>
-                </Link>
+
                 <OWNRolePrivateComponents>
+                    <Link to={"/new_order_create"}>
+                        <MainButton>Создать новый заказ</MainButton>
+                    </Link>
                     <Link to={"/my_orders"}>
                         <MainButton>{t('profile.created_orders')}</MainButton>
-                        <Link to={"/moderation_on_review"}>
-                            <MainButton>Отчеты на мои заказы</MainButton>
-                        </Link>
+                    </Link>
+                    <Link to={"/moderation_on_review"}>
+                        <MainButton>Отчеты на мои заказы</MainButton>
+                    </Link>
+                    <Link to={"/moderation_in_progress"}>
+                        <MainButton>Текущие заказы</MainButton>
                     </Link>
                 </OWNRolePrivateComponents>
                 <EMPRolePrivateComponents>
+                    <Link to={"/active_orders"}>
+                        <MainButton>Текущие заказы</MainButton>
+                    </Link>
                     <Link to={"/my_response"}>
                         <MainButton>{t('profile.my_responses')}</MainButton>
                     </Link>
@@ -74,9 +84,13 @@ const Navbar = () => {
                 </OWNRolePrivateComponents>
                 <LanguageSwitcher></LanguageSwitcher>
                 <MainButton onClick={logout}>Выйти из профиля</MainButton>
+                <Link to={"/rating_users"}>
+                    <MainButton>Топ пользователей</MainButton>
+                </Link>
             </div>
         </Menu>
-    );
+    )
+        ;
 };
 
 export default Navbar;

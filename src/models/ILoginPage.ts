@@ -8,5 +8,6 @@ export interface ILoginPage {
     password?: string,
     access_token: string,
     refresh_token: string,
+    is_banned: boolean,
 
 }

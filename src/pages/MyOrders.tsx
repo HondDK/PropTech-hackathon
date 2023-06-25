@@ -15,7 +15,7 @@ const MyOrders = () => {
 
 
     function deleteOrder(id: number) {
-        const url = `http://206.189.61.25:8003/apartx_orders/orders/order_responses/${id}`;
+        const url = `http://206.189.61.25:8003/apartx_orders/orders/orders/${id}`;
         const token = access_token; // Замените на ваш JWT-токен
 
         deleteItem(id, url, token);
