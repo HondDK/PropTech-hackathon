@@ -17,7 +17,7 @@ const Navbar = () => {
                 <Link to={"/user_profile"}>
                     <MainButton>Профиль</MainButton>
                 </Link>
-                <Link to={"/user_profile"}>
+                <Link to={"/active_orders"}>
                     <MainButton>Активные заказы</MainButton>
                 </Link>
                 <OWNRolePrivateComponents>

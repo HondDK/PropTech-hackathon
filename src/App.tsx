@@ -20,6 +20,7 @@ function App() {
     const persistor = persistStore(store);
 
     return (
+
         <div className="App">
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>

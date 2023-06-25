@@ -42,9 +42,9 @@ const OrderDetailPage = () => {
 
     function handleSubmitResponse(id: string) {
         const article = {
-            id: uuid,
+            id: id,
         }
-        const url = `${BASE_URL}/orders/orders/${id}/choose_order_response/`
+        const url = `${BASE_URL}orders/orders/${uuid}/choose_order_response/`
         sendRequest(url, article, access_token);
     }
     console.log(username);
