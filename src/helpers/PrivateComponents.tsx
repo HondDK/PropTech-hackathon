@@ -11,7 +11,7 @@ const PrivateComponents = ({ children }: HTMLProps<HTMLElement>) => {
     } else {
         return (
             <>
-                <Link to="/" relative="path" >
+                <Link to="/login" relative="path" >
                     <p>Авторизация</p>
                 </Link>
             </>

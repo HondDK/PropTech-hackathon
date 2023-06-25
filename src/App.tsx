@@ -11,24 +11,25 @@ import {store} from "./redux/store";
 import {Provider} from "react-redux";
 import PrivateRoute from "./helpers/PrivateRoute";
 import NewOrderCreate from "./pages/NewOrderCreate";
-import AcceptedOrders from "./pages/AcceptedOrders";
 import MyResponse from "./pages/MyResponse";
 import MyOrders from "./pages/MyOrders";
+import ActiveOrders from "./pages/ActiveOrders";
+import RegPage from "./pages/RegPage";
 
 function App() {
     const persistor = persistStore(store);
-
     return (
         <div className="App">
             <Provider store={store}>
                 <PersistGate loading={null} persistor={persistor}>
                     <Router>
                         <Routes>
-                            <Route element={<LoginPage/>} path="/"/>
+                            <Route element={<LoginPage/>} path="/login"/>
+                            <Route element={<RegPage/>} path="/reg"/>
                             <Route element={<OrdersPage/>} path="/orders"/>
                             <Route element={<OrderDetailPage/>} path="/order_detail/:uuid"/>
                             <Route element={<PrivateRoute/>}>
-                                <Route element={<AcceptedOrders/>} path={"/accepted_orders"}/>
+                                <Route element={<ActiveOrders/>} path={"/active_orders"}/>
                                 <Route element={<UserProfilePage/>} path="/user_profile"/>
                                 <Route element={<NewOrderCreate/>} path={"/new_order_create"}/>
                                 <Route element={<MyOrders/>} path="/my_orders"/>

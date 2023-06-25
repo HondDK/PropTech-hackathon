@@ -37,7 +37,7 @@ const OrderDetailPage = () => {
         }
         const url = `${BASE_URL}orders/order_responses/`
         sendRequest(url, article, access_token);
-
+     
     }
 
     function handleSubmitResponse(id: string) {

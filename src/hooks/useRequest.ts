@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import axios, { AxiosResponse } from 'axios';
+import {useState} from 'react';
+import axios, {AxiosResponse} from 'axios';
 import {ILoginPage} from "../models/ILoginPage";
 
 interface FormData {
     append?(name: string, value: any): void;
 }
 
-interface Article extends FormData{
+interface Article extends FormData {
     email?: string;
     username?: string,
     password?: string,
@@ -46,11 +46,14 @@ const useRequest = () => {
     const [error, setError] = useState<ErrorType | null>(null);
 
     const sendRequest = (url: string, article: Article, token?: string) => {
+        const headers: { [key: string]: string } = {};
+        if (token) {
+            headers['Authorization'] = `Bearer ${token}`;
+        }
+
         axios
             .post(url, article, {
-                headers: {
-                    Authorization: `Bearer ${token}` // Добавление JWT-токена в заголовок запроса
-                }
+                headers: headers
             })
             .then((response: AxiosResponse<ResponseData>) => {
                 setResponseData(response.data);
@@ -59,6 +62,7 @@ const useRequest = () => {
                 setError(error);
             });
     };
+
 
     return { responseData, error, sendRequest };
 };
