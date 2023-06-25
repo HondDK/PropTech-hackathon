@@ -10,7 +10,7 @@ interface Article extends FormData {
     email?: string;
     username?: string,
     password?: string,
-    code?: number,
+    code?: string,
     access?: string,
     refresh?: string,
     title?: string,

@@ -1,6 +1,8 @@
     export interface IApiResponse {
         user_email?: string;
-
+        username? : string,
+        avatar?: string,
+        rate?: number,
         tagData?: {
             results?: {
                 uuid: string,

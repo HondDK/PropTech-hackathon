@@ -4,7 +4,7 @@ import useFormInput from "../../hooks/useFormInput"
 import useRequest from "../../hooks/useRequest";
 import {useAppDispatch} from "../../hooks/useRedux";
 import {setAccess_token, setEmail, setRefresh_token} from "../../redux/reducers/LoginPageSlice";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const FormLogin = () => {
     const navigate = useNavigate();
@@ -32,8 +32,9 @@ const FormLogin = () => {
         if (responseData !== null) {
             dispatch(setAccess_token(responseData.access))
             dispatch(setRefresh_token(responseData.refresh))
+            navigate("/orders");
         }
-        navigate("/orders");
+
         console.log(responseData)
     };
 
@@ -49,7 +50,9 @@ const FormLogin = () => {
                 <input type="password" placeholder="12345" {...pass}/>
                 <MainButton onClick={handleLogin}>Войти</MainButton>
             </form>
-
+            <Link to={"/reg"}>
+                <MainButton>Регистрация</MainButton>
+            </Link>
         </div>
     )
 }
