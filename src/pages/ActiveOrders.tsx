@@ -3,11 +3,13 @@ import {useAppSelector} from "../hooks/useRedux";
 import useFetchData from "../hooks/useFetchData";
 import useRequest from "../hooks/useRequest";
 import Header from "../components/UI/Header";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import MainButton from "../components/UI/MainButton";
 import ImageUpload from "../components/ImageUpload";
 
 const ActiveOrders = () => {
+  const navigate = useNavigate();
+
   const {access_token} = useAppSelector((state) => state.loginPage);
   const BASE_URL =
       "http://206.189.61.25:8003/apartx_orders/orders/orders/my_not_done";
@@ -55,7 +57,7 @@ const ActiveOrders = () => {
 
     sendRequest(url, article, access_token)
 
-
+    navigate("/orders");
   }
 
   const [showForm, setShowForm] = useState(false);

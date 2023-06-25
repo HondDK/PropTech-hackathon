@@ -29,7 +29,9 @@ const Navbar = () => {
         const url = "http://206.189.61.25:8002/apartx_auth/auth/users/role/"
         sendRequest(url, article, access_token)
         console.log(responseData)
-        localStorage.clear();
+        localStorage.clear()
+        navigate("/login")
+
     }
 
     function changeRoleEmp() {
@@ -39,12 +41,15 @@ const Navbar = () => {
         const url = "http://206.189.61.25:8002/apartx_auth/auth/users/role/"
         sendRequest(url, article, access_token)
         console.log(responseData)
+        localStorage.clear()
+        navigate("/login")
+
     }
 
     function logout() {
         localStorage.clear()
         window.location.reload();
-        navigate("/orders")
+        navigate("/login")
     }
 
     return (
@@ -53,7 +58,6 @@ const Navbar = () => {
                 <Link to={"/user_profile"}>
                     <MainButton>Профиль</MainButton>
                 </Link>
-
                 <OWNRolePrivateComponents>
                     <Link to={"/new_order_create"}>
                         <MainButton>Создать новый заказ</MainButton>
@@ -79,9 +83,7 @@ const Navbar = () => {
                 <EMPRolePrivateComponents>
                     <MainButton onClick={changeRoleOwn}>Сменить роль на заказчика</MainButton>
                 </EMPRolePrivateComponents>
-                <OWNRolePrivateComponents>
-                    <MainButton onClick={changeRoleEmp}>Сменить роль на исполнителя</MainButton>
-                </OWNRolePrivateComponents>
+                <MainButton onClick={changeRoleEmp}>Сменить роль на исполнителя</MainButton>
                 <LanguageSwitcher></LanguageSwitcher>
                 <MainButton onClick={logout}>Выйти из профиля</MainButton>
                 <Link to={"/rating_users"}>

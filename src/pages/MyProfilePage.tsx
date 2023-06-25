@@ -6,8 +6,11 @@ import useFetchData from "../hooks/useFetchData";
 import useRequest from "../hooks/useRequest";
 import useFormInput from "../hooks/useFormInput";
 import ImageUpload from "../components/ImageUpload";
+import {useNavigate} from "react-router-dom";
 
 const MyProfilePage = () => {
+    const navigate = useNavigate();
+
     const {access_token} = useAppSelector((state) => state.loginPage);
     const BASE_URL =
         "http://206.189.61.25:8002/apartx_auth/auth/users/info";
@@ -55,6 +58,8 @@ const MyProfilePage = () => {
         const article = {description: description.value}
         const url = "http://206.189.61.25:8002/apartx_auth/auth/users/set_description/"
         sendRequest(url, article, access_token);
+        navigate("/user_profile")
+
     }
 
     if (isLoading) {

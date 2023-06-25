@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Header from '../components/UI/Header';
 import MainButton from '../components/UI/MainButton';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import useFetchData from "../hooks/useFetchData";
 import useRequest from "../hooks/useRequest";
 import {useAppDispatch, useAppSelector} from "../hooks/useRedux";
@@ -10,6 +10,7 @@ import {log} from "util";
 
 const OrderDetailPage = () => {
     const {uuid} = useParams();
+    const navigate = useNavigate();
     const BASE_URL = 'http://206.189.61.25:8003/apartx_orders/';
     const dispatch = useAppDispatch();
 
@@ -37,7 +38,7 @@ const OrderDetailPage = () => {
         }
         const url = `${BASE_URL}orders/order_responses/`
         sendRequest(url, article, access_token);
-     
+        navigate("/my_response")
     }
 
     function handleSubmitResponse(id: string) {

@@ -3,13 +3,15 @@ import {useAppSelector} from '../hooks/useRedux';
 import useFetchData from '../hooks/useFetchData';
 import useRequest from '../hooks/useRequest';
 import Header from '../components/UI/Header';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import MainButton from '../components/UI/MainButton';
 import useFormInput from '../hooks/useFormInput';
 import axios from 'axios';
+import navbar from "../components/UI/Navbar";
 
 
 const ModerationPageOnReview = () => {
+    const navigate = useNavigate();
     const {access_token} = useAppSelector((state) => state.loginPage);
     const BASE_URL = 'http://206.189.61.25:8003/apartx_orders/orders/orders/my_on_review';
     const {data, isLoading, error} = useFetchData(BASE_URL, access_token);
@@ -20,7 +22,7 @@ const ModerationPageOnReview = () => {
 
 
     function submitReview(uuid: string) {
-
+       
         const url = `http://206.189.61.25:8003/apartx_orders/orders/orders/${uuid}/finish_order_owner/`;
 
         const config = {
@@ -48,6 +50,7 @@ const ModerationPageOnReview = () => {
 
         const url = 'http://206.189.61.25:8002/apartx_auth/profile/profile/rate_employee/';
         sendRequest(url, article, access_token);
+        navigate("/orders");
     }
 
 
